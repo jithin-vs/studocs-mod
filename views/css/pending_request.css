@@ -1,0 +1,164 @@
+* {
+    scroll-behavior: smooth;
+  }
+  .navbar {
+    background-color: #3c4d6b;
+  }
+  .logo img{
+    width:40px;
+  }
+  .logo{
+    font-family: "Jost", sans-serif; 
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 30px;
+  }
+  
+   .side1{
+    position: relative;
+    background-color:rgb(255, 253, 253); 
+    margin: 0PX; 
+    padding: 0PX;
+    overflow-y:auto;
+    height: 690px;
+   }
+   .side2{
+    background-color:#f0ecec; 
+    position: relative;
+    padding: 0PX;
+    overflow-y:auto;
+    height: 690px;
+   }
+   
+   .panel{
+    padding-top: 3px;
+    margin-top: 75px;
+    background-color:rgb(255, 255, 255); 
+    overflow-y:auto;
+    height: 500px;
+    border: 2px solid ;
+    font-size: 15px;
+    line-height: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+   }
+   
+   .panel2{
+    margin-top: 20px;
+    margin-left: 50px;
+    background-color:rgb(255, 255, 255); 
+    overflow-y:auto;
+    height: auto;
+    
+   }
+   .panel2 hr{
+    border-color: rgb(218, 216, 216);
+   }
+   .subm{
+    padding-left: 10px;
+    margin-left: 22%;
+    margin-bottom:5px ;
+   }
+   .scc{
+    margin-top: 10px;
+  }
+   @media (max-width:570px) {
+    .panel{
+      margin-left: 10%!important;
+      width :80%!important;
+    }
+    .panel2{
+      margin-left: 0px!important;
+    }
+    .subm{
+        margin-left: 10%!important;
+    }
+    #textAreaWindow {
+        width: calc(300px - 20px);
+        max-width: 300px;
+    }
+    
+   }
+   #textAreaContainer,
+   #textAreaContainer1 {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding-left: 20px;
+    
+    transform: translate(-50%, -50%);
+  }
+  
+  #textAreaWindow {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+    height: 200px;
+    width: calc(300px - 20px);
+      max-width: 300px;
+    background-color: #ffffff;
+    border: 2px solid #0065f3;
+    padding: 10px;
+    padding-top: 40px;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  #closeButton,#closeButton1 {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+  
+  #button1,
+  #button5 {
+    position: relative;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    background-color: rgb(64, 0, 87);
+    bottom: 5px;
+    top: 5px;
+    left: 120px;
+    right: 5px;
+    padding: 5px 10px;
+  }
+  #myTextArea,
+  #myTextArea1{
+    
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+  }
+  
+  #verificationMessage {
+    font-size: 20px;
+    padding-left: 10px;
+  }
+  #rejectionMessage{
+    font-size: 20px;
+    padding-left: 10px;
+  }
+  .fa-arrow-right{
+    margin-left: 85%;
+    margin-top: 50%;
+  }
+.subm button{
+  width: 125px;
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

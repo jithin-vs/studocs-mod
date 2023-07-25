@@ -1,0 +1,87 @@
+* {
+  scroll-behavior: smooth;
+}
+.navbar {
+  background-color: #3c4d6b;
+}
+.logo img{
+  width:40px;
+}
+.logo{
+  font-family: "Jost", sans-serif; 
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 30px;
+}
+
+ .side1{
+  position: relative;
+  background-color:rgb(255, 253, 253); 
+  margin: 0PX; 
+  padding: 0PX;
+  overflow-y:auto;
+  height: 675px;
+ }
+ .side2{
+  background-color:#f0ecec; 
+  position: relative;
+  padding: 0PX;
+  overflow-y:auto;
+  height: 675px;
+ }
+ .panel{
+  padding-top: 3px;
+    margin-top: 75px;
+    background-color:rgb(255, 255, 255); 
+    overflow-y:auto;
+    height: 500px;
+    border: 2px solid ;
+    font-size: 15px;
+    line-height: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+ }
+ 
+ .panel2{
+  margin-top: 20px;
+  margin-left: 50px;
+  background-color:rgb(255, 255, 255); 
+  overflow-y:auto;
+  height: auto;
+  
+ }
+ .panel2 hr{
+  border-color: rgb(218, 216, 216);
+ }
+ .subm{
+  padding-left: 10px;
+  margin-left: 10%;
+ }
+ .scc{
+  margin-top: 10px;
+}
+ @media (max-width:570px) {
+  .panel{
+    margin-left: 10%!important;
+    width :80%!important;
+  }
+  .panel2{
+    margin-left: 0px!important;
+  }
+  .ha{
+    margin-top: 700px;
+    margin-left: 10%;
+  }
+ }
+/* ... previous styles ... */
+.ha{
+  margin-top: 250px;
+}
+.fa-arrow-right{
+  margin-left: 85%;
+  margin-top: 50%;
+}
+.subm button{
+width: 145px;
+}

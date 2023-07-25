@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STUDOCS</title>
+  <link href="/assets/img/logo.png" rel="icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="./css/status.css">
+  <link rel="stylesheet" href="./css/form.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark">
+    <a class="navbar-brand logo" href="#">
+      <img src="/assets/img/logo.png" alt="Studocs">
+      STUDOCS
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" onclick="history.back()">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#" data-target="#myModal" data-toggle="modal">Sign Out <i
+              class="fa fa-sign-out"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 side1">
+        <h4 style="margin-left: 20px;"><u>Pending Requests</u></h4>
+        <div class="col-lg-12 panel2">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Application Name</th>
+                  <th>Submit date</th>
+                </tr>
+              </thead>
+            <tbody>
+            <% applications.forEach(function(application) { %>
+                <tr>
+                  <td data-toggle="mod" data-target="#myMod"><%= application.form_id %></td>
+                  <td data-toggle="moda" data-target="#myModa"><%= application.name %></td>
+                  <td data-toggle="mo" data-target="#myMo"><%= application.date %></td>
+                </tr>
+            <% }); %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-sm-6 side2">
+        <div class="col-sm-6 panel">
+
+        </div>
+        
+        <div class="container-fluid">
+          <div class="card">
+            <!-- Add class 'active' to progress -->
+            <div class="row d-flex justify-content-center status">
+                <div class="col-12">
+                <ul id="progressbar" class="text-center">
+                    <li class="step0"></li>
+                    <li class="step0"></li>
+                    <li class="step0"></li>
+                    <li class="step0"></li>
+                </ul>
+                </div>
+            </div>
+            <div class="row justify-content-between top">
+                <div class="row d-flex icon-content role">
+                    <img class="icon" src="./assets/img/1.png">
+                    <div class="d-flex flex-column position">
+                        <p class="font-weight-bold">Staff<br>Advisor</p>
+                    </div>
+                </div>
+                <div class="row d-flex icon-content role">
+                    <img class="icon" src="./assets/img/images1-PhotoRoom.png-PhotoRoom.png">
+                    <div class="d-flex flex-column position">
+                        <p class="font-weight-bold">HOD</p>
+                    </div>
+                </div>
+                <div class="row d-flex icon-content role">
+                    <img class="icon" src="./assets/img/civil-rights-symbol-png-favpng-f4xh1jNhZvNG2bzyJXzvt72YQ_t-removebg-preview.png">
+                    <div class="d-flex flex-column position">
+                        <p class="font-weight-bold">Principal</p>
+                    </div>
+                </div>
+                <div class="row d-flex icon-content role">
+                    <img class="icon" src="./assets/img/images3-PhotoRoom.png-PhotoRoom.png">
+                    <div class="d-flex flex-column position">
+                        <p class="font-weight-bold">Office</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

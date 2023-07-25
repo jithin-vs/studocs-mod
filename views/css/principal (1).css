@@ -1,0 +1,132 @@
+* {
+    scroll-behavior: smooth;
+  }
+.navbar {
+    background-color: #3c4d6b;
+  }
+  .logo img{
+    width:40px;
+  }
+  .logo{
+    font-family: "Jost", sans-serif; 
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 30px;
+  }
+
+.edit{
+    width:10%;
+    text-align: end;
+    position: relative;
+    left:700px;
+    display: inline-block;
+    margin:0px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: "Jost", sans-serif;
+    padding-top: 50px;
+}
+
+.panel {
+    border: 2px solid #000000;
+    padding: 20px;
+    margin: 10px;
+    width: 86%;
+    margin-left: 10%;
+    height: 100%;
+    float: auto;
+  }
+  .banner{
+    top:0px;
+    z-index: 800;
+    position: relative;
+    padding: 0px;
+    background-image: url(../assets/img/bk.png);
+    height: 504px;  
+    background-position-x: right;
+    background-repeat: no-repeat;
+  }
+   .pic hr {
+    
+    width: 100%;
+    border-top: 1px solid #000;
+}
+.pic{
+    
+    width:100%
+}
+.dp{
+    height: 50%;
+}
+.address{
+    padding-right: 20px;
+    line-height: 26pt;
+    padding-top: 5%;
+}
+ input{
+    border-width: 0ch;
+}
+.abc{
+    padding-left: 0%;
+}
+.button1{
+    background-color: #ffffff;
+    border: 2px solid;
+    color: rgb(1, 1, 1);
+    padding: 48px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding-right: 15px; 
+    margin: 10px; 
+
+}
+.container {
+    width: 100%;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.imag img{
+    vertical-align: middle;
+border-style: solid;
+border-radius: 50%;
+}
+.banner h3{
+    padding-top: 100px;
+}
+@media screen and (max-width:768px) {
+    .address{
+
+    
+        padding-top: 1%!important;
+        padding-left: 20px;
+
+}
+.container{
+    padding: 20px;
+}
+.imag{
+    padding-left: 18%;
+    padding-bottom: 20px;
+}
+.edit{
+    padding-top: 0%!important;
+    left: 260px!important;
+}
+.banner h3{
+    padding-top: 0px!important;
+}  
+.button1{
+    padding: 25px 32px!important;
+    width: 250px;
+    margin-left: 33px;
+}
+.banner{
+    background-image: url(../assets/img/bk1.png)!important;
+    height: 420px!important;
+    background-position: center;
+}
+
+}

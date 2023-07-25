@@ -1,0 +1,74 @@
+* {
+    scroll-behavior: smooth;
+  }
+  .navbar {
+    background-color: #3c4d6b;
+  }
+  .logo img{
+    width:40px;
+  }
+  .logo{
+    font-family: "Jost", sans-serif; 
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 30px;
+  }
+  .form {
+    padding: 20px;;
+  }
+  .side1{
+    background-color:rgb(255, 253, 253); 
+    margin: 0PX; 
+    padding: 0PX;
+    overflow-y:auto;
+    height: 652px;
+   }
+   .panel2{
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color:rgb(255, 255, 255); 
+    overflow-y:auto;
+    height: auto;
+    overflow-x: auto;
+    width: auto;
+   }
+   
+   .side2{
+    background-color:#f0ecec; 
+    position: relative;
+    padding: 0PX;
+    overflow-y:auto;
+    height: 652px;
+   }
+   .panel{
+    padding-top: 3px;
+    margin-top: 75px;
+    background-color:rgb(255, 255, 255); 
+    overflow-y:auto;
+    height: 500px;
+    border: 2px solid ;
+    font-size: 15px;
+    line-height: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+   }
+   @media (max-width:570px) {
+    .panel{
+      margin-left: 10%!important;
+      width :80%!important;
+    }
+    .panel2{
+      margin-left: 0px!important;
+    }
+  
+   }
+   .fa-arrow-right{
+    margin-left: 85%;
+    margin-top: 50%;
+  }
+.subm button{
+  width: 125px;
+}
+  

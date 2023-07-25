@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTP Verification</title>
+  <link rel="stylesheet" href="/css/otpverify.css">
+</head>
+<body>
+  <div class="container">
+    <h1>OTP Verification</h1>
+    <% const data = jsonData %>
+    <% const encodedData = encodeURIComponent(JSON.stringify(data)); %>
+    <form action="/otpverify" method="POST" onsubmit="return validateForm()">
+      <p>Please enter the OTP received:</p>
+      <input type="hidden" name="jsonData" value="<%= jsonData %>">
+      <input type="text" name="otp" id="otpInput" required>
+      <button type="submit">Verify OTP</button>
+    </form>
+
+    <script>
+      function validateForm() {
+        var otpInput = document.getElementById('otpInput');
+        var otpValue = otpInput.value.trim();
+        
+        // Check if the OTP is a 6-digit number
+        var otpPattern = /^\d{6}$/;
+        if (!otpPattern.test(otpValue)) {
+          alert('Please enter a valid 6-digit OTP.');
+          otpInput.focus();
+          return false;
+        }
+
+        return true;
+      }
+
+      // Optional: Auto-focus the OTP input field
+      window.onload = function() {
+        document.getElementById('otpInput').focus();
+      };
+    </script>
+  </div>
+</body>
+</html>

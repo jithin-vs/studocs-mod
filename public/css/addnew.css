@@ -1,0 +1,35 @@
+* {
+  scroll-behavior: smooth;
+}
+.panel {
+  border: 1px solid #0b0b0b;
+  padding: 20px;
+  margin: 10px;
+  width: 96%;
+        height: 100%;
+  float: auto;
+}
+.navbar {
+  background-color: #3c4d6b;
+}
+.logo img{
+  width:40px;
+}
+.logo{
+  font-family: "Jost", sans-serif; 
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 30px;
+}
+.left {
+    text-align: right;
+}
+.h3 {
+    padding: auto;
+}
+
+.form {
+  padding: 20px;;
+}
+

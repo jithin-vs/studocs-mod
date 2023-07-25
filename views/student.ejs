@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>STUDOCS</title>
+  <link href="/assets/img/logo.png" rel="icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+   <link href="/css/student.css" rel="stylesheet">
+   <script src="/js/student1.js"></script>
+<style>
+  .card-body {
+  position: relative;
+}
+
+.download-icon,
+    .delete-icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+</style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-sm navbar-dark">
+      <a class="navbar-brand logo" href="#">
+        <img src="/assets/img/logo.png" alt="Studocs">
+        STUDOCS
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav desktop-menu">
+      
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link active" href="#docs">Documents</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#banner">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#" data-target="#myModal" data-toggle="modal">Sign Out <i class="fa fa-sign-out"></i></a>
+          </li>
+
+        </ul>
+        <ul class="navbar-nav mobile-menu">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#docs">Documents</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#banner">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#" data-target="#myModal" data-toggle="modal">Sign Out <i class="fa fa-sign-out"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+  </header>
+    <br><br> 
+    <div class="container">
+      <div class="container-fluid pic">
+        <div class="row dp">
+          <div class="col-lg-4">
+            <div class="imag" style="width: 225px; height: 225px; object-fit: cover; overflow: hidden;">
+              <img alt="<%= name%>" src="<%= photo %>" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+            </div>
+             <b> &nbsp;NAME&nbsp;&nbsp;&nbsp;:<%= name%></b>
+          </div>
+          <div class="col-lg-6 address" ><b>
+              ADMNO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<%= admno %><br>
+              REGNO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<%= regno %> <br>
+              DEPT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :<%= dept %><br>
+              ADDRESS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :<%= addr %> <br>
+              PHONE NO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<%= phno%> <br>
+              EMAIL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<%= email %><br>
+            </b>
+            <div class="edit"> 
+              <a href='/sform/<%= regno%>'>Edit</a> 
+            </div> </div>
+            
+            
+        </div>
+        
+        <hr >
+      </div>
+      <div class="abc" id="docs">
+      <h3 >DOCUMENTS</h3>
+      <div class="panel container">
+        <div class="container">
+
+          <form action="/upload/<%= regno%>" method="POST" enctype="multipart/form-data" class="mt-4">
+            <div class=" form-row mb-3" style="font-weight:600;">
+              <div class="form-group col-lg-6">
+                <label for="attaname" class="form-label">Attachment Name</label>
+                <input type="text" class="form-control" style="height: 42px;" id="attaname" name="attaname" required>
+              </div>
+              <div class="form-group col-lg-6">
+                <label for="file" class="form-label">File</label>
+                <input type="file" class="form-control" id="file" name="file" required>
+              </div>
+            </div>
+            <div style="float: right; padding-left: 50px; padding-bottom: 20px;" class="col-lg-2">
+            <button type="submit" id="uploadForm" class="btn btn-primary">Upload</button>
+          </div>
+          </form>
+      
+          <% if (attachments && attachments.length > 0) { %>
+            <h2 class="mt-5 k" style="font-weight:400;">Attachments</h2>
+            <div class="row mt-3" >
+              <% for (let i = 0; i < attachments.length; i++) { %>
+                <div class="col-md-3" >
+                  <div class="card mb-3" style="width: 250px;">
+                    <div class="card-body">
+                      <h5 class="card-title" style="text-align: center; font-size: 25px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><%= attachments[i].attaname %></h5>
+                       <form action="/remove?regno=<%= regno%>" method="POST"  class="mt-3">
+                        <input type="hidden" name="attachmentId" value="<%= attachments[i].attaid %>">
+                        <div class="aa">
+                        <div class="btn-group" role="group" aria-label="Third group">
+                        <a href="#" class=" btn card-link download-icon" onclick="openPDFInNewTab('/download?file=<%= encodeURIComponent(attachments[i].file) %>')" style="margin-top: 20px;"><i class="fa fa-download fa-2x"></i></a>
+                      </div>
+                      <div class="btn-group" role="group" aria-label="Third group">
+                        <button type="submit" style="background:white" class="btn"><i type="submit" class="fa fa-trash fa-2x"></i></button>
+                      </div>
+                    </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+            </div>
+          <% } %>
+        </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      </div>
+      
+      <div class="pic">
+        <br><br><hr ></div>
+      </div>
+      <br>
+      <div class="banner" id="banner"><br>
+      <h3>SERVICES</h3><br>
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <input type="button" class="button1 btn-block" onclick="window.location.href='/requests'" value="REQUESTS">
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <input type="button" class="button1 btn-block" onclick="window.location.href='/verified-requests'" value="VERIFIED REQUESTS">
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <input type="button" class="button1 btn-block" onclick="window.location.href='/status'" value="STATUS">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="myModal"> 
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Sign Out</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					Do you want to sign out?
+				</div>
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="window.location.href='/logout'" >Sign Out</button>
+				</div>
+			</div>
+		</div>
+	</div>
+  <script>
+    function openPDFInNewTab(url) {
+      window.open(url, '_blank');
+    }
+    window.onload = function() {
+      // Check if the form has been submitted
+      var isFormSubmitted = sessionStorage.getItem('isFormSubmitted');
+
+      // If the form has been submitted, clear the flag to prevent automatic submission on page reload
+      if (isFormSubmitted) {
+        sessionStorage.removeItem('isFormSubmitted');
+      }
+
+      // Handle form submission
+      document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        // Check if the form has already been submitted
+        if (isFormSubmitted) {
+          event.preventDefault(); // Prevent form submission
+          alert('The form has already been submitted. Please refresh the page if you want to submit again.');
+        } else {
+          // Set the flag indicating that the form has been submitted
+          sessionStorage.setItem('isFormSubmitted', true);
+        }
+      });
+    };
+  </script>
+</body>  
+
+</html>

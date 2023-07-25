@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STUDOCS</title>
+  <link href="/assets/img/logo.png" rel="icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+
+  <link rel="stylesheet" href="/css/pending_request.css">
+  
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark">
+    <a class="navbar-brand logo" href="#">
+      <img src="/assets/img/logo.png" alt="Studocs">
+      STUDOCS
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" onclick="history.back()">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#" data-target="#myModal" data-toggle="modal">Sign Out <i class="fa fa-sign-out"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav> 
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 side1">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h4 style="margin-left: 20px;"><u>Pending Requests</u></h4>
+        <div style="display: flex; align-items: center; " >
+        <div class="search-bar" style="margin-left: 10px; margin-top: 10px; margin-right: 8px;">
+          <input type="text" id="searchInput" placeholder="Search..." class="form-control form-control-sm">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+      </div>
+        </div>
+        <div class="col-lg-12 panel2">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Application Name</th>
+                <th>Name</th>
+                <th>Batch</th>
+                <th>Dept</th>
+                <th>Submit date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+          <tbody>
+          <% applications.forEach(function(application) { %>
+              <tr>
+                <td data-toggle="mod" data-target="#myMod"><%= application.appid %></td>
+                <td hidden><input type="text" id="appid" value="<%= application.appid %>"></td>
+                <td data-toggle="moda" data-target="#myModa"><%= application.formname %></td>
+                <td data-toggle="moda" data-target="#myM"><%= application.name %></td>
+                <td data-toggle="moda" data-target="#myModa"><%= application.batch %></td>
+                <td data-toggle="moda" data-target="#myModa"><%= application.dept %></td>
+                <% const dateFromDatabase = application.date %>
+                <% const options = { day: '2-digit', month: '2-digit', year: 'numeric' }; %>
+                <% const formattedDate = dateFromDatabase ? dateFromDatabase.toLocaleDateString(undefined, options) : null; %>
+                <td data-toggle="mo" data-target="#myMo"><%= formattedDate %></td>
+              
+              <td>
+                <button type="button" class="btn btn-success view-button" id="<%= application.appid %>" onclick="fetchid()" data-form-id="<%= application.appid %>">view</button>
+              </td>
+            </tr>
+          <% }); %>
+          </tbody>
+          </table>
+        </div>
+      </div>
+    <div class="col-sm-6 side2">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="col-sm-6 panel"id="displayContainer" style="margin-left: 20%;">
+          <!-- Existing code for the panel -->
+        </div>
+        <div class="container-fluid col-lg-3" id="attach" ></div>
+        </div>
+      <br>
+      <div class="subm">
+        <button class="btn btn-secondary scc" style="background-color:rgb(2, 169, 2);" id="button3">Verify</button>
+        <div id="textAreaContainer" style="display: none;">
+            <div id="textAreaWindow">
+                <span id="closeButton">&#10006;</span>
+                <textarea id="myTextArea" rows="3" style="resize: none; border-radius: 5px;" placeholder="Remarks"></textarea>
+                <button id="button1" onclick="redirectToVerifyForm()">Verify</button>
+            </div>
+        </div>
+
+        <button class="btn btn-secondary scc" style="background-color: rgb(208, 66, 23);"  id="button4">Reject</button>
+          <div id="textAreaContainer1" style="display: none;">
+            <div id="textAreaWindow">
+              <span id="closeButton1">&#10006;</span>
+              <textarea id="myTextArea1"  rows="3" style="resize: none; border-radius: 5px;" placeholder="Reason for rejection"></textarea>
+              <button id="button5" data-target="#my" data-toggle="modal" onclick="redirectToRejectForm()" >Reject</button>
+            </div>
+          </div>
+      </div>
+     
+    </div>
+  </div>
+              
+      </div>
+    </div>
+    </div>
+      
+</div>
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Sign Out</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        Do you want to sign out?
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="window.location.href='/logout'" >Sign Out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="my">
+  <div class="modal-dialog" style="max-width: 300px;">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <i class="fa fa-times fa-2x" style="color: red;"></i>
+        <span id="rejectionMessage">Rejected</span>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModa">
+  <div class="modal-dialog" style="max-width: 300px;">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <i class="fa fa-check fa-2x text-success"></i>
+        <span id="verificationMessage">Verified</span>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+    </div> <!-- Add this closing div tag -->
+  </div>
+</div>
+
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+           
+                 let selectedFormId; // Variable to store the selected form ID
+
+              function fetchid() {
+                // Get the selected form ID from the clicked button's data attribute
+                selectedFormId = event.target.dataset.formId;
+                console.log('Selected Form ID:', selectedFormId);
+              }    
+              document.addEventListener('DOMContentLoaded', function() {
+  const viewButtons = document.querySelectorAll('.view-button');
+  const displayContainer = document.getElementById('displayContainer');
+  const attachContainer = document.getElementById('attach'); // Get the attach container element
+
+  viewButtons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      fetchid(); // Call the fetchid() function to save the form ID
+      console.log(selectedFormId);
+
+      // Make a request to fetch the HTML content from the server
+      fetch(`/requ/${selectedFormId}`)
+        .then(response => response.text())
+        .then(html => {
+          // Update the HTML content of the display container
+          displayContainer.innerHTML = html;
+        })
+        .catch(error => console.error(error));
+
+      // Make a request to fetch the attachments
+      fetch(`/add_attach?id=${selectedFormId}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          let links = '';
+          data.forEach(attachment => {
+            const encodedFile = encodeURIComponent(attachment.file);
+            const url = `/download?file=${encodedFile}`;
+            const link = `<a href="${url}" target="_blank">${attachment.attaname}</a><br>`;
+            links += link;
+          });
+          console.log(links);
+          // Update the HTML content of the attach container with the links and styling
+          attachContainer.innerHTML = `
+            <h4>Attachments</h4>
+            <div style="border: 1px solid black; border-radius:5px; box-shadow: 0px 2px 15px rgba(42, 0, 250, 0.2); padding:5px; min-height:25px">
+              ${links}
+            </div>
+          `;
+        })
+        .catch(error => console.error(error));
+    });
+  });
+});
+
+                   
+        const button1 = document.getElementById('button1');
+        const button2 = document.getElementById('button2');
+        const button3 = document.getElementById('button3');
+        const textAreaContainer = document.getElementById('textAreaContainer');
+        const textAreaContainer1 = document.getElementById('textAreaContainer1');
+        const closeButton = document.getElementById('closeButton');
+        const closeButton1 = document.getElementById('closeButton1');
+        const button4 = document.getElementById('button4');
+        const verificationWindow = document.getElementById('verificationWindow');
+
+
+        // Add click event listener to button1
+        button1.addEventListener('click', () => {
+        // Enable button2
+        button2.disabled = false;
+        textAreaContainer.style.display = 'none';
+        
+        });
+
+        button3.addEventListener('click', () => {
+        // Toggle the visibility of the text area container
+        textAreaContainer.style.display = textAreaContainer.style.display === 'none' ? 'block' : 'none';
+        });
+        button4.addEventListener('click', () => {
+        // Toggle the visibility of the text area container
+        textAreaContainer1.style.display = textAreaContainer1.style.display === 'none' ? 'block' : 'none';
+        });
+
+
+        closeButton.addEventListener('click', () => {
+        // Hide the text area container
+        textAreaContainer.style.display = 'none';
+        });
+        button5.addEventListener('click', () => {
+        // Hide the text area container
+        textAreaContainer1.style.display = 'none';
+        });
+         
+        closeButton1.addEventListener('click', () => {
+        // Hide the text area container
+        textAreaContainer1.style.display = 'none';
+        });
+        
+        
+        function getURLParameters() {
+              const queryString = window.location.search.slice(1);
+              const params = {};
+
+              if (queryString) {
+                const paramPairs = queryString.split('&');
+                paramPairs.forEach(pair => {
+                  const [key, value] = pair.split('=');
+                  params[key] = decodeURIComponent(value);
+                  console.log(params);
+                });
+              }
+
+              return params;
+            }
+            function updateDivContent(add) {
+                // Create a <span> element with the added content in red color
+                const redContent = '<span style="color: red;">' + add + '</span>';
+                var userurl= getURLParameters();
+                // Get the existing content of the div
+                const tutorDiv = document.getElementById(userurl.user);
+                const existingContent = tutorDiv.innerHTML;
+
+                // Append the red content
+                const modifiedContent = existingContent + redContent;
+
+                // Update the content of the div
+                tutorDiv.innerHTML = modifiedContent;
+               
+                return;
+            }
+            
+
+
+
+               function updateRequestData() {
+              // Get the content of the div with id 'displayContainer'
+              var appId = selectedFormId;
+              console.log(appId)
+              const requestData = document.getElementById('displayContainer').innerHTML;
+
+              // Create an object to hold the data
+              const data = {
+                request_data: requestData,
+                appid: appId
+              };
+
+              // Send an AJAX request to update the request_data field
+              const xhr = new XMLHttpRequest();
+              xhr.open('POST', '/update-request-data');
+              xhr.setRequestHeader('Content-Type', 'application/json');
+              xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                  if (xhr.status === 200) {
+                    console.log('request_data updated successfully');
+                  } else {
+                    console.error('Error updating request_data:', xhr.status);
+                  }
+                }
+              };
+              xhr.send(JSON.stringify(data));
+              return;
+            }
+
+
+
+
+
+
+
+
+        function redirectToVerifyForm() {
+           const textareaValue = document.getElementById('myTextArea').value;
+            // Append the desired string
+            var userurl= getURLParameters();
+            const modifiedText = 'Verified by '+userurl.user+': ' + textareaValue;
+            console.log(modifiedText); 
+            updateDivContent(modifiedText);
+            console.log("user="+userurl.user);
+            updateRequestData();
+           const url = `/verify-form?appid=${selectedFormId}`;
+            window.location.href = url;
+          }
+       function redirectToRejectForm() {
+              var userurl= getURLParameters();
+              const textareaValue = document.getElementById('myTextArea1').value;
+              // Append the desired string
+              const modifiedText = 'Rejected by '+userurl.user+': ' + textareaValue;
+              console.log(modifiedText);  
+              console.log("user="+userurl.user)
+              updateDivContent(modifiedText);
+              updateRequestData();
+            const url = `/reject-form?appid=${selectedFormId}`;
+            window.location.href = url;
+          }
+          $(document).ready(function() {
+    // Add an event listener to the search input
+    $('#searchInput').on('keyup', function() {
+      var value = $(this).val().toLowerCase();
+
+      // Filter the table rows based on the search value
+      $('table tbody tr').filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
+  });
+    </script>
+   </body>
+</html>
